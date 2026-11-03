@@ -24,13 +24,16 @@ Use a source checkout supplied by the user or already identified in the task con
 
 Harness upstream: <https://github.com/deepseek-ai/deepseek-harness>.
 
-Prefer these official examples from that repository:
+Choose among these official-source references:
 
 - Minimal tool plugin: [`greet` tutorial](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/user/develop/basic/tool.md).
 - Minimal external bundle: the packaging guide above includes `hello-plugin`, its manifest, patch, and install flow.
 - Web UI plugin: [`packages/client/ui-settings-web-search`](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/client/ui-settings-web-search); inspect its manifest, Host entry, browser entry, and tests alongside the [settings-card cookbook](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/cookbook/adding-a-settings-card.md).
+- External bundle with several plugins and a Web panel: [`dsh-superagent-prototype`](https://github.com/deepseek-ai/dsh-superagent-prototype). Read its `package.json`, `cordis.patch.yml`, `tsdown.config.ts`, `src/index.ts`, and `src/client/index.tsx` together. Its [architecture guide](https://github.com/deepseek-ai/dsh-superagent-prototype/blob/main/docs/007-architecture.md) maps domain logic, runtime composition, Source adapters, UI, and tests; its [cookbook](https://github.com/deepseek-ai/dsh-superagent-prototype/blob/main/docs/008-cookbook.md) explains adding a Source.
 
 The tutorials contain examples to build; the Web UI package is a maintained in-tree implementation. Adapt its workspace dependencies and build tooling for an external package rather than copying them unchanged.
+
+The Superagent repository is published by the Harness team as a research prototype, not an official DeepSeek product or a production-ready template. Its Source protocol and `orchestrator` service belong to that bundle, not the Harness core. Check its declared and locked dependencies against the target release. Review its `danger-full-access` presets and process-wide environment changes before reusing deployment settings.
 
 Paths below are relative to the relevant repository root. Read applicable `AGENTS.md` files. Record the target Harness version/commit: APIs are pre-stable, and online documentation may describe a different release. When browsing upstream, select the matching tag or commit where available.
 
