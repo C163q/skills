@@ -13,6 +13,8 @@ Write for a reader who has the project but not the conversation. Preserve inform
 
 Identify the reader's task and what they should be able to do or understand afterward. Distinguish instructions for doing something, reference facts, and explanations of why. Choose a structure suited to that purpose; do not impose a directory taxonomy or template.
 
+State prerequisites that materially affect the task. Explain project-specific concepts without assuming familiarity with internal conventions or earlier discussions.
+
 Also identify the document's lifecycle. Current guides describe the supported system; specifications state requirements; task records preserve conclusions and evidence for a particular baseline. An active specification can remain authoritative for its task even when dated. Age alone does not establish validity.
 
 Before adding text, find its existing home and decide whether prose adds value:
@@ -27,6 +29,8 @@ Before adding text, find its existing home and decide whether prose adds value:
 
 Source code is evidence of implemented behavior, not proof that behavior meets the requirements. Keep user-facing guidance usable without requiring readers to reconstruct a workflow from source.
 
+In developer guides, connect responsibilities and workflows to verified code entry points, key types, and relevant checks so readers can explore and modify the implementation.
+
 Maintain one authoritative full definition of a rule. Elsewhere, provide the short context needed by that reader and a precise link. Necessary summaries are useful; independently maintained competing definitions are not.
 
 ## Write the current meaning
@@ -36,7 +40,7 @@ Edit the existing explanation around its final meaning instead of appending a re
 - State the behavior or requirement directly, including conditions, limits, and consequences that affect use.
 - For procedures, include necessary prerequisites, actions, expected results, and relevant failure or recovery behavior.
 - Distinguish implemented facts, accepted but unimplemented requirements, proposals, and unresolved questions. Make uncertainty explicit rather than completing gaps from assumption.
-- Use established names and identifiers. Give sections descriptive headings and enough context to make sense when found through search.
+- Give sections descriptive headings and enough context to make sense when found through search.
 - Preserve reasons and trade-offs that still affect decisions. Remove conversational attribution, abandoned suggestions, revision sequences, and completion announcements from current guidance.
 
 For example, after verifying timeout and status behavior, replace:
@@ -48,6 +52,16 @@ Into a statement of the verified behavior and its implications:
 > The client does not automatically retry a timed-out submission. A timeout can occur after server acceptance. Check status using the operation ID before resubmitting; if no ID was received, reconcile acceptance with the server first.
 
 Keep verification evidence in the relevant task record or delivery note. Create a separate record when the project requires it or it has a concrete follow-up purpose. Avoid creating a new historical document for every edit.
+
+## Use understandable language
+
+Use familiar, precise words and established project names consistently. Explain unfamiliar terms where readers need them, and connect project concepts to actual code identifiers. Use abbreviations when they help readers, establishing their meaning on first use. Introduce a new term only when existing terminology cannot adequately name the concept; define it explicitly.
+
+Define concepts through their meaning, scope, conditions, and use. Describe required actions directly.
+
+Add a corrective contrast only to address evidenced confusion: a user question that reveals the confusion, an observed misuse, or a documented incident. A merely plausible misunderstanding is not evidence. Do not invent alternative interpretations to rebut.
+
+State verified restrictions, unsupported behavior, and failure conditions explicitly, using negative statements when they convey those facts directly. Compare real alternatives when the task calls for a comparison.
 
 ## Synchronize from the behavior change
 
@@ -79,6 +93,7 @@ Use checks suited to the changed content: links and paths, executable examples, 
 Before delivery, check:
 
 - Can a reader understand the scope and act without the development conversation?
+- Are unfamiliar terms explained and corrective contrasts supported by evidence of confusion?
 - Are behavior, requirements, and uncertainty distinguishable, with necessary reasons preserved?
 - Have affected definitions, summaries, examples, and links been reconciled?
 - Do current guides describe the system directly, with task progress and verification history in their proper place?
